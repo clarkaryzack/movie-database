@@ -66,9 +66,6 @@ export default class SearchResults extends Component {
 											<br /> {tv.name}
 										</div>
 									</NavLink>
-									<button onClick={this.addtoList}>
-										Add to Watch List
-									</button>
 								</div>
 							)
 						}

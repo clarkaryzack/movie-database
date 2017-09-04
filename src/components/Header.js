@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import "../index.css";
 
-import NavBar from "./NavBar.js"
+import {NavLink} from 'react-router-dom'
+
 import Form from "./Form.js"
 
 export default class Header extends Component {
@@ -9,10 +10,19 @@ export default class Header extends Component {
 		return (
 			<div className="row">
 				<div id="logo">
-					MovieGoer
+					<nav >
+						<NavLink activeClassName="selected" className="nav-link" exact to="/">
+							Moviegoer
+						</NavLink>
+					</nav>
 				</div>
-				<NavBar/>
 				<Form/>
+				<NavLink to="/advSearch">
+					Advanced Search
+				</NavLink>
+				<NavLink to="/watchList">
+					Watch List
+				</NavLink>
 			</div>
 		)
 	}

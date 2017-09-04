@@ -70,7 +70,6 @@ export default class AllResults extends Component {
 												<br /> {card.name}
 											</div>
 										</NavLink>
-										<button onClick={this.addtoList}>Add to Watch List</button>
 									</div>
 								);
 							}

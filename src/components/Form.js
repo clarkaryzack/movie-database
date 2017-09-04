@@ -40,9 +40,6 @@ export default class Form extends Component {
 							search
 						</button>
 					</form>
-					<NavLink to="/advSearch">
-						Advanced Search
-					</NavLink>
 				</div>
 			</div>
 		)

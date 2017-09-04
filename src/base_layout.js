@@ -8,12 +8,8 @@ import Footer from "./components/Footer.js";
 class BaseLayout extends Component {
 	constructor(props) {
 		super(props);
-		this.addtoList = this.addtoList.bind(this)
 		this.state = {
 		};
-	}
-	addtoList() {
-
 	}
   render() {
     return (
