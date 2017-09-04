@@ -10,7 +10,7 @@ export default class WatchList extends Component {
     super(props);
     this.state = {
       movieList: [],
-      tvList: [],
+      tvList: []
     };
   }
   componentDidMount() {
@@ -38,10 +38,10 @@ export default class WatchList extends Component {
       .catch(function(error) {
         console.log(error);
       })
-		.catch(function(error) {
-			console.log(error);
-		});
-	}
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
   render() {
     return (
       <div>

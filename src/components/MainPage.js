@@ -104,7 +104,8 @@ export default class MainPage extends Component {
               .then(response => response.json())
               .then(response => {
                 let popularPeople = response.results.map(person => {
-                  let personurl =
+									if (person.profile_path) {
+									let personurl =
                     "https://image.tmdb.org/t/p/w640/" + person.profile_path;
                   return (
                     <div key={person.id}>
@@ -120,6 +121,7 @@ export default class MainPage extends Component {
                       </NavLink>
                     </div>
                   );
+								}
                 });
                 this.setState({ popularPeople: popularPeople });
                 //fetch and map popular movies
