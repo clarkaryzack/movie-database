@@ -11,7 +11,7 @@ class BaseLayout extends Component {
   }
   render() {
     return (
-      <div>
+      <div className=''>
         <Header />
         {this.props.children}
         <Footer />

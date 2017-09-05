@@ -22,8 +22,9 @@ export default class Header extends Component {
           </nav>
         </div>
         <Form />
-        <NavLink to="/advSearch">Advanced Search</NavLink>
-        <NavLink to="/watchList">Watch List</NavLink>
+					<button>
+        <NavLink to="/watchList">Favorites List</NavLink>
+			</button>
       </div>
     );
   }

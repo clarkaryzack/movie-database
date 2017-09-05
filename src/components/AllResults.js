@@ -127,7 +127,9 @@ export default class AllResults extends Component {
                       <br /> {card.title}
                     </div>
                   </NavLink>
-                  <button onClick={this.addtoList}>Add to Watch List</button>
+									<button className="recommendbutton" onClick={() => this.addtoList(card.id, "movie")}>
+										<i className="fa fa-heart"></i> Favorite
+									</button>
                 </div>
               );
             }

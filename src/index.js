@@ -12,7 +12,6 @@ import PersonPage from "./components/PersonPage.js";
 import BaseLayout from "./base_layout.js";
 import SearchResults from "./components/SearchResults.js";
 import AllResults from "./components/AllResults.js";
-import AdvancedSearch from "./components/AdvancedSearch.js";
 import WatchList from "./components/WatchList.js";
 
 ReactDOM.render(
@@ -25,7 +24,6 @@ ReactDOM.render(
         <Route path="/search/:term/:page" component={SearchResults} />
         <Route path="/search/:term/:page" component={SearchResults} />
         <Route path="/all/:genre/:term/:page" component={AllResults} />
-        <Route path="/advsearch" component={AdvancedSearch} />
         <Route path="/watchList" component={WatchList} />
         <Route path="/" component={MainPage} />
       </Switch>

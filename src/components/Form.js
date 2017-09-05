@@ -36,6 +36,7 @@ export default class Form extends Component {
         <div className="row">
           <form onSubmit={this.handleSubmit}>
             <input
+							className = "textbox"
               type="text"
               name="name"
               placeholder="search for movies, tv shows or people"

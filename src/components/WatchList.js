@@ -46,15 +46,9 @@ export default class WatchList extends Component {
     return (
       <div>
         <div>
-          Watch List: Movies
+          Favorites List: Movies
           <br />
           <div className="row scrollmenu">
-            <div className="scrollLabelOuter">
-              <div className="rotate">
-                <p className="scrollLabelText">Scroll</p>
-                <i className="fa fa-chevron-down scrollArrow" />
-              </div>
-            </div>
             <div className="row movierow">{this.state.movieList}</div>
           </div>
         </div>

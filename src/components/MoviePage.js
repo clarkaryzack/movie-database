@@ -49,12 +49,14 @@ export default class MoviePage extends Component {
             return (
               <div key={cast.credit_id}>
                 <NavLink to={`/person/${cast.id}`}>
+								<div className='card moviecard'>
                   <img className="movieposter" src={imgurl} />
                   <br />
                   {cast.name}
                   <br />
                   Character: {cast.character}
                   <br />
+								</div>
                 </NavLink>
               </div>
             );
@@ -68,11 +70,13 @@ export default class MoviePage extends Component {
           return (
             <div key={movie.id}>
               <NavLink to="/">
+							<div className='card moviecard'>
                 <a onClick={event => this.handleSubmit(event, movie.id)}>
                   <img className="movieposter" src={imgurl} />
                   <br />
                   {movie.title}
                 </a>
+							</div>
               </NavLink>
             </div>
           );
@@ -123,29 +127,25 @@ export default class MoviePage extends Component {
           {this.state.movieInfo.overview}
           <br />
 {/* scroll menu for cast */}
+<div>
+	Cast
+</div>
           <div className="row scrollmenu">
-            <div className="scrollLabelOuter">
-              <div className="rotate">
-                <p className="scrollLabelText">Scroll</p>
-                <i className="fa fa-chevron-down scrollArrow" />
-              </div>
-            </div>
             <div className="row movierow">{this.state.credits}</div>
           </div>
           <br />
 {/* scroll menu for similar films */}
+<div>
+	Similar Films
+</div>
           <div className="row scrollmenu">
-            <div className="scrollLabelOuter">
-              <div className="rotate">
-                <p className="scrollLabelText">Scroll</p>
-                <i className="fa fa-chevron-down scrollArrow" />
-              </div>
-            </div>
             <div className="row movierow">{this.state.similar}</div>
           </div>
         </div>
 {/* link to add to watch list */}
-        <button onClick={this.addtoList}>Add to Watch List</button>
+<button className="recommendbutton" onClick={() => this.addtoList(this.state.movieInfo.id, "movie")}>
+	<i className="fa fa-heart"></i> Favorite
+</button>
       </div>
     );
   }

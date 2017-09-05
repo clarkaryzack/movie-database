@@ -15,7 +15,7 @@ export default class SearchResults extends Component {
     };
   }
   componentDidMount() {
-// fetch movies based on params
+    // fetch movies based on params
     let moviesearchurl =
       "https://api.themoviedb.org/3/search/movie?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&query=" +
       this.props.match.params.term +
@@ -43,14 +43,16 @@ export default class SearchResults extends Component {
                     <br /> {movie.title}
                   </div>
                 </NavLink>
-                <button onClick={this.addtoList}>Add to Watch List</button>
+								<button className="recommendbutton" onClick={() => this.addtoList(movie.id, "movie")}>
+									<i className="fa fa-heart"></i> Favorite
+								</button>
               </div>
             );
           }
         });
-				if (movieCards.length!=0) {
-        	this.setState({ movielist: movieCards });
-				}
+        if (movieCards.length != 0) {
+          this.setState({ movielist: movieCards });
+        }
       })
       .catch(function(error) {
         console.log(error);
@@ -81,21 +83,21 @@ export default class SearchResults extends Component {
             );
           }
         });
-				if (tvCards.length!=0) {
-        this.setState({ tvlist: tvCards });
-			}
+        if (tvCards.length != 0) {
+          this.setState({ tvlist: tvCards });
+        }
       })
       .catch(function(error) {
         console.log(error);
       });
-//search people
-//set url using parameters in page url
+    //search people
+    //set url using parameters in page url
     let personsearchurl =
       "https://api.themoviedb.org/3/search/person?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&query=" +
       this.props.match.params.term +
       "&include_adult=false&page=" +
       this.props.match.params.page;
-		console.log(personsearchurl)
+    console.log(personsearchurl);
     let personurl = this.state.personurl;
     fetch(personsearchurl)
       .then(response => response.json())
@@ -109,24 +111,23 @@ export default class SearchResults extends Component {
             console.log(personurl);
             return (
               <div key={person.id} className="allrows">
-                <NavLink to={`/person/${person.id}`}>
-                  <div className="card moviecard">
+                <div className="card moviecard">
+                  <NavLink to={`/person/${person.id}`}>
                     <img
                       alt="profile photo"
                       src={personurl}
                       className="movieposter profilePhoto"
                     />
                     <br /> {person.name}
-                  </div>
-                </NavLink>
-                <button onClick={this.addtoList}>Add to Watch List</button>
+                  </NavLink>
+                </div>
               </div>
             );
           }
         });
-				if (personCards.length!=0) {
-        this.setState({ personlist: personCards });
-			}
+        if (personCards.length != 0) {
+          this.setState({ personlist: personCards });
+        }
       })
       .catch(function(error) {
         console.log(error);
@@ -140,12 +141,6 @@ export default class SearchResults extends Component {
           Movies
           <br />
           <div className="row scrollmenu">
-            <div className="scrollLabelOuter">
-              <div className="rotate">
-                <p className="scrollLabelText">Scroll</p>
-                <i className="fa fa-chevron-down scrollArrow" />
-              </div>
-            </div>
             <div className="row movierow">{this.state.movielist}</div>
             <div className="">
               <NavLink to={`/all/movie/${this.props.match.params.term}/1`}>
@@ -158,12 +153,6 @@ export default class SearchResults extends Component {
           TV Shows
           <br />
           <div className="row scrollmenu">
-            <div className="scrollLabelOuter">
-              <div className="rotate">
-                <p className="scrollLabelText">Scroll</p>
-                <i className="fa fa-chevron-down scrollArrow" />
-              </div>
-            </div>
             <div className="row movierow">{this.state.tvlist}</div>
             <div className="allResults">
               <NavLink to={`/all/tv/${this.props.match.params.term}/1`}>
@@ -176,12 +165,6 @@ export default class SearchResults extends Component {
           People
           <br />
           <div className="row scrollmenu">
-            <div className="scrollLabelOuter">
-              <div className="rotate">
-                <p className="scrollLabelText">Scroll</p>
-                <i className="fa fa-chevron-down scrollArrow" />
-              </div>
-            </div>
             <div className="row movierow">{this.state.personlist}</div>
             <div className="allResults">
               <NavLink to={`/all/person/${this.props.match.params.term}/1`}>

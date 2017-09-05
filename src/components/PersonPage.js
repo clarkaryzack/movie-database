@@ -67,11 +67,13 @@ export default class PersonPage extends Component {
             return (
               <div key={movie.id}>
                 <NavLink to={`/movie/${movie.id}`}>
+								<div className='card moviecard'>
                   <img className="movieposter" src={movieurl} />
                   <br />
                   {movie.title}
 									<br/>
 									Character: {movie.character}
+								</div>
                 </NavLink>
               </div>
             );
@@ -85,11 +87,13 @@ export default class PersonPage extends Component {
             return (
               <div key={tv.id}>
                 <NavLink to={`/tv/${tv.id}`}>
+								<div className='card moviecard'>
                   <img className="movieposter" src={tvurl} />
                   <br />
                   {tv.name}
 									<br/>
 									Character: {tv.character}
+								</div>
                 </NavLink>
               </div>
             );
@@ -108,33 +112,32 @@ export default class PersonPage extends Component {
     return (
       <div>
         <div className="">
+					<div className="">
           <img alt="card" src={personurl} className="movieposter" />
-          <br />
-          {this.state.personInfo.name}
-          <br />
-					{this.state.birthday} - {this.state.deathday}
-          <br />
-          {this.state.personInfo.biography}
+          </div>
+					<div className="col-10">
+	          {this.state.personInfo.name}
+	          <br />
+						{this.state.birthday} - {this.state.deathday}
+	          <br />
+	          {this.state.personInfo.biography}
+					</div>
         </div>
         {/* scroll menu for movie credits */}
+				<div>
+					Film Credits
+				</div>
         <div className="row scrollmenu">
-          <div className="scrollLabelOuter">
-            <div className="rotate">
-              <p className="scrollLabelText">Scroll</p>
-              <i className="fa fa-chevron-down scrollArrow" />
-            </div>
-          </div>
-          <div className="row movierow">{this.state.movieCards}</div>
+          <div className="row movierow">
+						{this.state.movieCards}
+					</div>
         </div>
-        <br />
-        {/* scroll menu for tvcredits */}
+        <br/>
+{/* scroll menu for tvcredits */}
+<div>
+	TV Credits
+</div>
         <div className="row scrollmenu">
-          <div className="scrollLabelOuter">
-            <div className="rotate">
-              <p className="scrollLabelText">Scroll</p>
-              <i className="fa fa-chevron-down scrollArrow" />
-            </div>
-          </div>
           <div className="row movierow">{this.state.tvCards}</div>
         </div>
       </div>
