@@ -149,7 +149,6 @@ export default class MainPage extends Component {
                       .then(response => response.json())
                       .then(response => {
                         let popularTVCards = response.results
-                          .slice(0, 10)
                           .map(movie => {
                             let movieurl =
                               "https://image.tmdb.org/t/p/w650/" +
@@ -192,6 +191,7 @@ export default class MainPage extends Component {
       });
   }
   render() {
+		console.log(this.state.popularTV)
     return (
       <div>
         <div className="rowtitle">
