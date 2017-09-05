@@ -33,7 +33,7 @@ export default class TVPage extends Component {
 // map over genre list and add to state
         let genreList = response.genres.map(genre => {
           console.log(genre.name);
-          return <div key={genre.id}>{genre.name}</div>;
+          return <div key={genre.id} className="allrows">{genre.name}</div>;
           console.log(genreList);
         });
         console.log(genreList);
@@ -45,7 +45,7 @@ export default class TVPage extends Component {
           let imgurl = "https://image.tmdb.org/t/p/w640/" + cast.profile_path;
           console.log(imgurl);
           return (
-            <div key={cast.credit_id}>
+            <div key={cast.credit_id} className="allrows">
               <NavLink to={`/person/${cast.id}`}>
 							<div className='card moviecard'>
                 <img className="movieposter" src={imgurl} />
@@ -66,7 +66,7 @@ export default class TVPage extends Component {
           let imgurl = "https://image.tmdb.org/t/p/w500" + tv.poster_path;
           console.log(imgurl);
           return (
-            <div key={tv.id}>
+            <div key={tv.id} className="allrows">
               <NavLink to="/">
 							<div className='card moviecard'>
                 <a onClick={event => this.handleSubmit(event, tv.id)}>
@@ -115,35 +115,45 @@ export default class TVPage extends Component {
     return (
 //body of page
       <div>
-        <div className="">
-          <img alt="card" src={tvurl} className="movieposter" />
-          <br />
-          {this.state.tvInfo.name}
-          <br />
-          <br />
-          Genre:{this.state.genreList}
-          <br />
-          Air Dates: {monthNames[mm1]} {dd1}, {yy1} - {monthNames[mm2]} {dd2}, {yy2}
-          <br />
-          {this.state.tvInfo.overview}
-          <br />
+				<div className="pagetitle">
+					<h2>TV Show Details</h2>
+				</div>
+        <div className="pagebody row centered">
+					<div className="bodycard col-8 offset-2 row">
+						<div className="col-6">
+          		<img alt="card" src={tvurl} className="bodyposter" />
+						</div>
+						<div className="col-6 align-self-center">
+		          <h2>{this.state.tvInfo.name}</h2>
+		          <br />
+		          Air Dates: {monthNames[mm1]} {dd1}, {yy1} - {monthNames[mm2]} {dd2}, {yy2}
+		          <br />
+							<br/>
+		          {this.state.tvInfo.overview}
+	       		</div>
+					</div>
+				</div>
+
 {/* scroll menu for cast */}
-<div>
-	Cast
+<div className="rowtitle">
+	<h2>Cast</h2>
 </div>
-          <div className="row scrollmenu">
+          <div className="scrollmenu">
+						<div className="scrollborder">
             <div className="row movierow">{this.state.credits}</div>
           </div>
+				</div>
           <br />
 {/* scroll menu for similar films */}
-<div>
-	Similar TV Shows
+<div className="rowtitle">
+	<h2>Similar TV Shows</h2>
 </div>
-          <div className="row scrollmenu">
+          <div className="scrollmenu">
+						<div className="scrollborder">
             <div className="row movierow">{this.state.similar}</div>
           </div>
+				</div>
         </div>
-      </div>
     );
   }
 }

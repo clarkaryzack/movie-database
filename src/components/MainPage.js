@@ -48,20 +48,21 @@ export default class MainPage extends Component {
 			let movieCards = response.results.map(movie => {
 				let movieurl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
 				return (
-					<div key={movie.id}>
-						<div className="card moviecard">
-							<div className="cardinner">
-							<NavLink to={`/movie/${movie.id}`}>
-								<img alt="card" src={movieurl} className="movieposter"/>
-								<br/> {movie.title}
-							</NavLink>
-						</div>
-							<div className="recommendbutton">
-							<button onClick={() => this.addtoList(movie.id, "movie")}>
-								<i className="fa fa-heart"></i> Favorite
-							</button>
+					<div key={movie.id} className="allrows">
+						<NavLink to={`/movie/${movie.id}`}>
+							<div className="card moviecard">
+								<div className="cardinner">
+									<img alt="card" src={movieurl} className="movieposter"/>
+									<br/> {movie.title}
+								</div>
+								<div className="recommendbutton">
+									<button onClick={() => this.addtoList(movie.id, "movie")}>
+										<i className="fa fa-heart"/>{" "}
+										Favorite
+									</button>
+								</div>
 							</div>
-						</div>
+						</NavLink>
 					</div>
 				);
 			});
@@ -71,13 +72,13 @@ export default class MainPage extends Component {
 				let topRatedTvCards = response.results.map(movie => {
 					let movieurl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
 					return (
-						<div key={movie.id}>
-							<div className="card moviecard">
-								<NavLink to={`/tv/${movie.id}`}>
+						<div key={movie.id} className="allrows">
+							<NavLink to={`/tv/${movie.id}`}>
+								<div className="card moviecard">
 									<img alt="card" src={movieurl} className="movieposter"/>
 									<br/> {movie.name}
-								</NavLink>
-							</div>
+								</div>
+							</NavLink>
 						</div>
 					);
 				});
@@ -88,7 +89,7 @@ export default class MainPage extends Component {
 						if (person.profile_path) {
 							let personurl = "https://image.tmdb.org/t/p/w640/" + person.profile_path;
 							return (
-								<div key={person.id}>
+								<div key={person.id} className="allrows">
 									<NavLink to={`/person/${person.id}`}>
 										<div className="card moviecard">
 											<img alt="card" src={personurl} className="movieposter"/>
@@ -100,25 +101,26 @@ export default class MainPage extends Component {
 						}
 					});
 					this.setState({popularPeople: popularPeople});
-//fetch and map popular movies
+					//fetch and map popular movies
 					fetch("https://api.themoviedb.org/3/discover/movie?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false").then(response => response.json()).then(response => {
 						let popularCards = response.results.map(movie => {
 							let movieurl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
 							return (
-								<div key={movie.id}>
-								<div className="card moviecard">
-<div className="cardinner">
+								<div key={movie.id} className="allrows">
 									<NavLink to={`/movie/${movie.id}`}>
-											<img alt="card" src={movieurl} className="movieposter"/>
-											<br/> {movie.title}
+										<div className="card moviecard">
+											<div className="cardinner">
+												<img alt="card" src={movieurl} className="movieposter"/>
+												<br/> {movie.title}
+											</div>
+											<div className="recommendbutton">
+												<button onClick={() => this.addtoList(movie.id, "movie")}>
+													<i className="fa fa-heart"/>
+													Favorite
+												</button>
+											</div>
+										</div>
 									</NavLink>
-										</div>
-										<div className="recommendbutton">
-											<button onClick={() => this.addtoList(movie.id, "movie")}>
-												<i className="fa fa-heart"></i> Favorite
-											</button>
-										</div>
-									</div>
 								</div>
 							);
 						});
@@ -128,7 +130,7 @@ export default class MainPage extends Component {
 							let popularTVCards = response.results.slice(0, 10).map(movie => {
 								let movieurl = "https://image.tmdb.org/t/p/w650/" + movie.poster_path;
 								return (
-									<div key={movie.id}>
+									<div key={movie.id} className="allrows">
 										<NavLink to={`/tv/${movie.id}`}>
 											<div className="card moviecard">
 												<img alt="card" src={movieurl} className="movieposter"/>
@@ -158,72 +160,108 @@ export default class MainPage extends Component {
 	render() {
 		return (
 			<div>
-				<div>
-					Top Rated Movies
-					<br/>
+				<div className="rowtitle">
+					<h2>Top Rated Movies</h2>
 					<div className="allResults">
-						<NavLink to={`/all/movie/ztoprated/1`}>See All Results</NavLink>
-					</div>
-					<br/>
-					<div className="row scrollmenu">
-						<div className="row movierow">{this.state.toprated}</div>
-						<div className="allResults">
+						<button>
 							<NavLink to={`/all/movie/ztoprated/1`}>See All Results</NavLink>
+						</button>
+					</div>
+					<div className="scrollmenu">
+						<div className="scrollborder">
+							<div className="row movierow">
+								{this.state.toprated}
+								<div className="finalcard allrows">
+									<NavLink className="card moviecard" to={`/all/movie/ztoprated/1`}>
+										<i className="fa fa-plus-circle"/>
+										See All Results
+									</NavLink>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div>
-					Top Rated TV Shows<br/>
-					<div>
-						<NavLink to={`/all/tv/ztoprated/1`}>See All Results</NavLink>
-					</div>
-					<br/>
-					<div className="row scrollmenu">
-						<div className="row movierow">{this.state.topRatedTv}</div>
-						<div className="allResults">
+				<div className="rowtitle">
+					<h2>Top Rated TV Shows</h2>
+					<div className="allResults">
+						<button>
 							<NavLink to={`/all/tv/ztoprated/1`}>See All Results</NavLink>
+						</button>
+					</div>
+					<div className="scrollmenu">
+						<div className="scrollborder">
+							<div className="row movierow">
+								{this.state.topRatedTv}
+								<div className="finalcard allrows">
+									<NavLink className="card moviecard" to={`/all/tv/ztoprated/1`}>
+										<i className="fa fa-plus-circle"/>
+										See All Results
+									</NavLink>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div>
-					Popular People
-					<br/>
+				<div className="rowtitle">
+					<h2>Popular People</h2>
 					<div className="allResults">
-						<NavLink to={`/all/person/zpopular/1`}>See All Results</NavLink>
-					</div>
-					<br/>
-					<div className="row scrollmenu">
-						<div className="row movierow">{this.state.popularPeople}</div>
-						<div className="allResults">
+						<button>
 							<NavLink to={`/all/person/zpopular/1`}>See All Results</NavLink>
+						</button>
+					</div>
+					<div className="scrollmenu">
+						<div className="scrollborder">
+							<div className="row movierow">
+								{this.state.popularPeople}
+								<div className="finalcard allrows">
+									<NavLink className="card moviecard" to={`/all/person/zpopular/1`}>
+										<i className="fa fa-plus-circle"/>
+										See All Results
+									</NavLink>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div>
-					Popular Movies
-					<br/>
+				<div className="rowtitle">
+					<h2>Popular Movies</h2>
 					<div className="allResults">
-						<NavLink to={`/all/movie/zpopular/1`}>See All Results</NavLink>
-					</div>
-					<br/>
-					<div className="row scrollmenu">
-						<div className="row movierow">{this.state.popular}</div>
-						<div className="allResults">
+						<button>
 							<NavLink to={`/all/movie/zpopular/1`}>See All Results</NavLink>
+						</button>
+					</div>
+					<div className="scrollmenu">
+						<div className="scrollborder">
+							<div className="row movierow">
+								{this.state.popular}
+								<div className="finalcard allrows">
+									<NavLink className="card moviecard" to={`/all/movie/zpopular/1`}>
+										<i className="fa fa-plus-circle"/>
+										See All Results
+									</NavLink>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div>
-					Popular TV Shows
-					<br/>
+				<div className="rowtitle">
+					<h2>Popular TV Shows</h2>
 					<div className="allResults">
-						<NavLink to={`/all/tv/zpopular/1`}>See All Results</NavLink>
-					</div>
-					<br/>
-					<div className="row scrollmenu">
-						<div className="row movierow">{this.state.popularTV}</div>
-						<div className="allResults">
+						<button>
 							<NavLink to={`/all/tv/zpopular/1`}>See All Results</NavLink>
+						</button>
+					</div>
+					<div className="scrollmenu">
+						<div className="scrollborder">
+							<div className="row movierow">
+								{this.state.popularTV}
+								<div className="finalcard allrows">
+									<NavLink className="card moviecard" to={`/all/tv/zpopular/1`}>
+										<i className="fa fa-plus-circle"/>
+										See All Results
+									</NavLink>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

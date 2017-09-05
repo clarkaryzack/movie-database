@@ -32,8 +32,7 @@ export default class Form extends Component {
   render() {
     console.log(this.state.searchterm);
     return (
-      <div>
-        <div className="row">
+        <div className="searchform">
           <form onSubmit={this.handleSubmit}>
             <input
 							className = "textbox"
@@ -48,7 +47,6 @@ export default class Form extends Component {
             </button>
           </form>
         </div>
-      </div>
     );
   }
 }

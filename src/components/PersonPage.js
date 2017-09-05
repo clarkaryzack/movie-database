@@ -65,17 +65,24 @@ export default class PersonPage extends Component {
             let movieurl =
               "https://image.tmdb.org/t/p/w500" + movie.poster_path;
             return (
-              <div key={movie.id}>
-                <NavLink to={`/movie/${movie.id}`}>
+              <div key={movie.id} className="allrows">
 								<div className='card moviecard'>
+									<div className='cardinner'>
+                <NavLink to={`/movie/${movie.id}`}>
+
                   <img className="movieposter" src={movieurl} />
                   <br />
                   {movie.title}
-									<br/>
-									Character: {movie.character}
-								</div>
                 </NavLink>
               </div>
+							<div className="recommendbutton">
+								<button onClick={() => this.addtoList(movie.id, "movie")}>
+									<i className="fa fa-heart"/>
+									{" "}Favorite
+								</button>
+							</div>
+						</div>
+					</div>
             );
           }
         });
@@ -85,14 +92,12 @@ export default class PersonPage extends Component {
           if (tv.poster_path) {
             let tvurl = "https://image.tmdb.org/t/p/w500" + tv.poster_path;
             return (
-              <div key={tv.id}>
+              <div key={tv.id} className="allrows">
                 <NavLink to={`/tv/${tv.id}`}>
 								<div className='card moviecard'>
                   <img className="movieposter" src={tvurl} />
                   <br />
                   {tv.name}
-									<br/>
-									Character: {tv.character}
 								</div>
                 </NavLink>
               </div>
@@ -111,35 +116,45 @@ export default class PersonPage extends Component {
 			"https://image.tmdb.org/t/p/w640/" + this.state.personInfo.profile_path;
     return (
       <div>
-        <div className="">
-					<div className="">
-          <img alt="card" src={personurl} className="movieposter" />
-          </div>
-					<div className="col-10">
-	          {this.state.personInfo.name}
+				<div className="pagetitle">
+					<h2>Person Details</h2>
+				</div>
+        <div className="pagebody row centered">
+					<div className="bodycard col-8 offset-2 row">
+						<div className="col-6">
+          		<img alt="card" src={personurl} className="bodyposter" />
+						</div>
+					<div className="col-6 align-self-center bodytext">
+	          <h2>{this.state.personInfo.name}</h2>
 	          <br />
 						{this.state.birthday} - {this.state.deathday}
-	          <br />
+	          <br/>
+						<br/>
 	          {this.state.personInfo.biography}
 					</div>
         </div>
+			</div>
         {/* scroll menu for movie credits */}
-				<div>
-					Film Credits
+				<div className="rowtitle">
+					<h2>Film Credits</h2>
 				</div>
-        <div className="row scrollmenu">
+        <div className="scrollmenu">
+					<div className="scrollborder">
           <div className="row movierow">
 						{this.state.movieCards}
 					</div>
         </div>
+			</div>
         <br/>
 {/* scroll menu for tvcredits */}
-<div>
-	TV Credits
+<div className="rowtitle">
+	<h2>TV Credits</h2>
 </div>
-        <div className="row scrollmenu">
+        <div className="scrollmenu">
+					<div className="scrollborder">
           <div className="row movierow">{this.state.tvCards}</div>
         </div>
+			</div>
       </div>
     );
   }
