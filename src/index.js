@@ -22,7 +22,6 @@ ReactDOM.render(
         <Route path="/tv/:tvnum" component={TVPage} />
         <Route path="/person/:personnum/" component={PersonPage} />
         <Route path="/search/:term/:page" component={SearchResults} />
-        <Route path="/search/:term/:page" component={SearchResults} />
         <Route path="/all/:genre/:term/:page" component={AllResults} />
         <Route path="/watchList" component={WatchList} />
         <Route path="/" component={MainPage} />
