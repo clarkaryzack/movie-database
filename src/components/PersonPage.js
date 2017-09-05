@@ -6,12 +6,38 @@ import { NavLink } from "react-router-dom";
 export default class PersonPage extends Component {
   constructor(props) {
     super(props);
+		this.addtoList = this.addtoList.bind(this);
     this.state = {
       personInfo: "",
       movieCards: "",
       tvCards: ""
     };
   }
+	addtoList(id, genre) {
+		console.log("here");
+		if (genre === "movie") {
+			console.log("here");
+			fetch("https://api.themoviedb.org/3/list/32914/add_item?api_key=4f2d813db1c216bca9c8a22d63ad274a&session_id=8203c9d46e318fdae07959d4701916b6a13b5031", {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({media_id: id})
+			});
+		}
+		if (genre === "tv") {
+			console.log("here");
+			fetch("https://api.themoviedb.org/3/list/32916/add_item?api_key=4f2d813db1c216bca9c8a22d63ad274a&session_id=8203c9d46e318fdae07959d4701916b6a13b5031", {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({media_id: id})
+			});
+		}
+	}
   componentDidMount() {
     console.log(this.props.match.params.personnum);
     let personnum = parseInt(this.props.match.params.personnum);
@@ -120,11 +146,11 @@ export default class PersonPage extends Component {
 					<h2>Person Details</h2>
 				</div>
         <div className="pagebody row centered">
-					<div className="bodycard col-8 offset-2 row">
-						<div className="col-6">
+					<div className="bodycard col-lg-8 col-md-10 offset-md-1 offset-lg-2 row">
+						<div className="col-lg-6 col-md-12">
           		<img alt="card" src={personurl} className="bodyposter" />
 						</div>
-					<div className="col-6 align-self-center bodytext">
+					<div className="col-lg-6 col-md-12 align-self-center bodytext">
 	          <h2>{this.state.personInfo.name}</h2>
 	          <br />
 						{this.state.birthday} - {this.state.deathday}

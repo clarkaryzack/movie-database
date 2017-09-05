@@ -49,21 +49,21 @@ export default class MainPage extends Component {
 				let movieurl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
 				return (
 					<div key={movie.id} className="allrows">
-						<NavLink to={`/movie/${movie.id}`}>
 							<div className="card moviecard">
 								<div className="cardinner">
+			<NavLink to={`/movie/${movie.id}`}>
 									<img alt="card" src={movieurl} className="movieposter"/>
 									<br/> {movie.title}
-								</div>
-								<div className="recommendbutton">
+						</NavLink>
+					</div>
+							<div className="recommendbutton">
 									<button onClick={() => this.addtoList(movie.id, "movie")}>
 										<i className="fa fa-heart"/>{" "}
 										Favorite
 									</button>
 								</div>
-							</div>
-						</NavLink>
 					</div>
+				</div>
 				);
 			});
 			this.setState({toprated: movieCards});
@@ -107,20 +107,20 @@ export default class MainPage extends Component {
 							let movieurl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
 							return (
 								<div key={movie.id} className="allrows">
-									<NavLink to={`/movie/${movie.id}`}>
-										<div className="card moviecard">
+									<div className='card moviecard'>
 											<div className="cardinner">
+												<NavLink to={`/movie/${movie.id}`}>
 												<img alt="card" src={movieurl} className="movieposter"/>
 												<br/> {movie.title}
+											</NavLink>
 											</div>
 											<div className="recommendbutton">
 												<button onClick={() => this.addtoList(movie.id, "movie")}>
-													<i className="fa fa-heart"/>
+													<i className="fa fa-heart"/>{" "}
 													Favorite
 												</button>
 											</div>
 										</div>
-									</NavLink>
 								</div>
 							);
 						});

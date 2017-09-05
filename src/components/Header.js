@@ -10,22 +10,23 @@ export default class Header extends Component {
   render() {
     return (
 			<div className="header row">
-				<div className="col-7 logo">
+				<div className="col-lg-7 col-md-12 logo">
 						<NavLink
 							activeClassName="selected"
 							className="nav-link"
 							exact
 							to="/">
 							<h1>Moviegoer
-								{" "}<i className="fa fa-video-camera"></i></h1>
+								{" "}<i className="fa fa-ticket"></i></h1>
 						</NavLink>
 				</div>
-				<div className="col-5 headerbuttons">
+				<div className="col-lg-5 col-md-12 headerbuttons">
 					<Form/>
 					<div className="watchlistButton">
 							<Link to="/watchList">
 								<button>
-									Favorite Movies List						</button>
+									<i className="fa fa-heart"></i>{" "}Community Favorites
+								</button>
 							</Link>
 					</div>
 				</div>

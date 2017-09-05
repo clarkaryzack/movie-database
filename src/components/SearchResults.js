@@ -8,11 +8,37 @@ import {NavLink} from "react-router-dom";
 export default class SearchResults extends Component {
 	constructor(props) {
 		super(props);
+		this.addtoList = this.addtoList.bind(this);
 		this.state = {
 			movielist: "No movies found that match your search.",
 			tvlist: "No tv shows were found that match your search.",
 			personlist: "No people were found who match your search."
 		};
+	}
+	addtoList(id, genre) {
+		console.log("here");
+		if (genre === "movie") {
+			console.log("here");
+			fetch("https://api.themoviedb.org/3/list/32914/add_item?api_key=4f2d813db1c216bca9c8a22d63ad274a&session_id=8203c9d46e318fdae07959d4701916b6a13b5031", {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({media_id: id})
+			});
+		}
+		if (genre === "tv") {
+			console.log("here");
+			fetch("https://api.themoviedb.org/3/list/32916/add_item?api_key=4f2d813db1c216bca9c8a22d63ad274a&session_id=8203c9d46e318fdae07959d4701916b6a13b5031", {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({media_id: id})
+			});
+		}
 	}
 	componentDidMount() {
 		// fetch movies based on params
@@ -38,7 +64,7 @@ export default class SearchResults extends Component {
 								</div>
 								<div className="recommendbutton">
 									<button onClick={() => this.addtoList(movie.id, "movie")}>
-										<i className="fa fa-heart"/>
+										<i className="fa fa-heart"/>{" "}
 										Favorite
 									</button>
 								</div>

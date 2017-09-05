@@ -7,6 +7,7 @@ export default class MoviePage extends Component {
 	constructor(props) {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.addtoList = this.addtoList.bind(this);
 		this.state = {
 			movieInfo: "",
 			genreList: "",
@@ -19,6 +20,31 @@ export default class MoviePage extends Component {
 		event.preventDefault();
 		window.location = "/movie/" + id;
 	}
+	addtoList(id, genre) {
+		console.log("here");
+		if (genre === "movie") {
+			console.log("here");
+			fetch("https://api.themoviedb.org/3/list/32914/add_item?api_key=4f2d813db1c216bca9c8a22d63ad274a&session_id=8203c9d46e318fdae07959d4701916b6a13b5031", {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({media_id: id})
+			});
+		}
+		if (genre === "tv") {
+			console.log("here");
+			fetch("https://api.themoviedb.org/3/list/32916/add_item?api_key=4f2d813db1c216bca9c8a22d63ad274a&session_id=8203c9d46e318fdae07959d4701916b6a13b5031", {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({media_id: id})
+			});
+		}
+	}
 	componentDidMount() {
 		//the fetch url is taken from search parameters in the page url
 		console.log(this.props.match.params.movienum);
@@ -28,9 +54,6 @@ export default class MoviePage extends Component {
 		console.log(fetchurl)
 		fetch(fetchurl).then(response => response.json()).then(response => {
 			this.setState({movieInfo: response});
-
-
-
 			// add cast to state by appending credits to fetch url
 			let credits = response.credits.cast.map(cast => {
 				console.log(cast.profile_path);
@@ -80,7 +103,6 @@ export default class MoviePage extends Component {
 			console.log(error);
 		});
 	}
-
 	render() {
 		// convert numberic date to text
 		var monthNames = [
@@ -110,17 +132,23 @@ export default class MoviePage extends Component {
 					<h2>Movie Details</h2>
 				</div>
 				<div className="pagebody row centered">
-					<div className="bodycard col-8 offset-2 row">
-						<div className="col-6">
+					<div className="bodycard col-lg-8 col-md-10 offset-md-1 offset-lg-2 row">
+						<div className="col-lg-6 col-md-12">
 							<img alt="card" src={movieurl} className="bodyposter"/>
 						</div>
-						<div className = "col-6 align-self-center bodytext">
+						<div className = "col-lg-6 col-md-12 align-self-center bodytext">
 				 			<h2>{this.state.movieInfo.title}</h2>
 							<br/>
 							Release Date: {monthNames[mm]} {dd}, {yy}
 							<br/>
 							<br/> {this.state.movieInfo.overview}
 							<br/>
+							<div className="moviepagefavbutton">
+								<button onClick={() => this.addtoList(this.state.movieInfo.id, "movie")}>
+									<i className="fa fa-heart"></i>
+									{" "}Favorite
+								</button>
+							</div>
 						</div>
 				</div>
 				</div>

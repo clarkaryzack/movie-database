@@ -119,11 +119,11 @@ export default class TVPage extends Component {
 					<h2>TV Show Details</h2>
 				</div>
         <div className="pagebody row centered">
-					<div className="bodycard col-8 offset-2 row">
-						<div className="col-6">
+					<div className="col-lg-8 col-md-10 offset-lg-2 offset-md-1 row bodycard align-self-center">
+						<div className="col-lg-6 col-md-12 align-self-center">
           		<img alt="card" src={tvurl} className="bodyposter" />
 						</div>
-						<div className="col-6 align-self-center">
+						<div className="col-lg-6 col-md-12 align-self-center">
 		          <h2>{this.state.tvInfo.name}</h2>
 		          <br />
 		          Air Dates: {monthNames[mm1]} {dd1}, {yy1} - {monthNames[mm2]} {dd2}, {yy2}

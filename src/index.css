@@ -7,18 +7,33 @@ body {
 	width: 100vw;
 	color: #254759
 }
+button {
+	color: #254759
+}
 h1 {
 	color: #254759;
-	font-size: 100px;
 	font-family: 'Josefin Sans', sans-serif;
+	font-size: 100px
 }
 h2 {
 	color: #254759;
 	margin-left: 20px;
 }
+.favcard {
+	width: 100vw
+}
+.pagetitle p {
+	margin-left: 20px
+}
 .movieposter {
   width: 150px;
 	margin-top: 10px;
+}
+.navbutton {
+	height: 100%;
+}
+.navbutton button {
+	height: 100%;
 }
 .pagebody {
 	background-color: #254759;
@@ -39,7 +54,7 @@ h2 {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	height: 10vw;
-	line-height: 2
+	line-height: 2;
 }
 .moviecard {
   width: 200px;
@@ -76,6 +91,13 @@ h2 {
 }
 .watchlistButton {
 	margin-top: 10px;
+	margin-bottom: 10px
+}
+.moviepagefavbutton button {
+	border-radius: 5px
+}
+.moviepagefavbutton {
+	margin-top: 10px
 }
 .watchlistButton button {
 	border-radius: 5px
@@ -123,7 +145,7 @@ h2 {
 	margin-right: 100px
 }
 
-.col-11 {
+.col-lg-11 {
   padding: 0px;
   display: flex;
   align-items: flex-start;
@@ -153,6 +175,23 @@ a:hover {
 .recommendbutton button {
 	border-radius: 5px
 }
+.removeButton button {
+	border-radius: 5px
+}
+.removeButton {
+	margin-top: 10px
+}
+.clearbutton button {
+	border-radius: 5px;
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+.emptyfavlist {
+	margin-left: 20px;
+	margin-top: 20px;
+	font-size: 30px;
+	height: 50vh
+}
 .cardinner {
 	margin-bottom: 40px
 }
@@ -173,12 +212,44 @@ a:hover {
 	text-align: center;
 	align-content: center;
 	align-items: center;
-	line-height: 6
+	line-height: 6;
+
+}
+.alltitle {
+	margin-top: 50px;
+}
+.alltitle {
+	margin-bottom: 30px;
+}
+.allpagenav {
+	margin-bottom: 20px;
+	width: 100vw
 }
 .footer a {
 	font-weight: bold;
 }
+.allcard {
+	margin: 20px
+}
 .fa-plus-circle {
 	margin-top: 80px;
 	font-size: 100px
+}
+.navbutton button {
+	border-style: none;
+}
+.alltitle h3 {
+ font-size: 20px;
+ margin-top: -10px;
+ margin-left: 40px;
+}
+@media (max-width: 1200px) {
+	h1 {
+		font-size: 80px
+	}
+}
+@media (max-width: 600px) {
+	h1 {
+		font-size: 50px
+	}
 }
