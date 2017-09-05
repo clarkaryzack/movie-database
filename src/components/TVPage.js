@@ -75,7 +75,6 @@ export default class TVPage extends Component {
           console.log(imgurl);
           return (
             <div key={tv.id} className="allrows">
-              <NavLink to={`/tv/${tv.id}`}>
                 <div className="card moviecard">
                   <a onClick={event => this.handleSubmit(event, tv.id)}>
                     <img
@@ -87,7 +86,6 @@ export default class TVPage extends Component {
                     {tv.name}
                   </a>
                 </div>
-              </NavLink>
             </div>
           );
         });
