@@ -9,7 +9,7 @@ export default class AllResults extends Component {
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
     this.state = {
-      allCards: "",
+      allCards: <div className='allsearchempty'>There are no results that match your search.</div>,
       bigArray: [],
       genre: "",
       heading: ""
@@ -173,7 +173,9 @@ export default class AllResults extends Component {
             return null;
           }
         });
+				if (allCards.length !== 0) {
         this.setState({ allCards: allCards });
+			}
       });
   }
   render() {

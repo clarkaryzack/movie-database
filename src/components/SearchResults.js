@@ -8,9 +8,9 @@ export default class SearchResults extends Component {
     super(props);
     this.addtoList = this.addtoList.bind(this);
     this.state = {
-      movielist: "No movies found that match your search.",
-      tvlist: "No tv shows were found that match your search.",
-      personlist: "No people were found who match your search."
+      movielist: <div className="noresults">No movies found that match your search.</div>,
+      tvlist: <div className="noresults">No tv shows were found that match your search.</div>,
+      personlist: <div  className="noresults">No people were found who match your search.</div>
     };
   }
 	//addtoList stores the movie to favorites
@@ -69,8 +69,8 @@ export default class SearchResults extends Component {
             return null;
           }
         });
-        if (movieCards.length !== 0) {
-          this.setState({ movielist: movieCards });
+				if (movieCards.length !== 0) {
+          this.setState({movielist:movieCards})
         }
       })
       .catch(function(error) {
@@ -104,8 +104,8 @@ export default class SearchResults extends Component {
             return null;
           }
         });
-        if (tvCards.length !== 0) {
-          this.setState({ tvlist: tvCards });
+				if (tvCards.length !== 0) {
+          this.setState({tvlist:tvCards})
         }
       })
       .catch(function(error) {
@@ -147,7 +147,7 @@ export default class SearchResults extends Component {
           }
         });
         if (personCards.length !== 0) {
-          this.setState({ personlist: personCards });
+          this.setState({personlist:personCards})
         }
       })
       .catch(function(error) {
@@ -155,6 +155,9 @@ export default class SearchResults extends Component {
       });
   }
   render() {
+		console.log(this.state.movielist)
+		console.log(this.state.tvlist)
+		console.log(this.state.personlist)
     return (
       <div>
         <div className="searchtitle">

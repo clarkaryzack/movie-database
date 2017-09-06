@@ -15,6 +15,12 @@ h1 {
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 100px
 }
+.noresults {
+	color: white
+}
+.allsearchempty{
+	font-size: 50px
+}
 h2 {
 	color: #254759;
 	margin-left: 20px;
