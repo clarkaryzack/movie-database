@@ -24,6 +24,7 @@ export default class WatchList extends Component {
         method: "POST"
       }
     )
+
   }
 //remove item removes a single item from the favorites list
   removeItem(id) {
@@ -66,7 +67,10 @@ export default class WatchList extends Component {
 
                     <div className="removeButton">
                       <button onClick={() => this.removeItem(movie.id)}>
-                        <i className="fa fa-times-circle" /> Remove Item
+												<NavLink to={`/`}>
+                        <i className="fa fa-times-circle" />
+												Remove Item
+											</NavLink>
                       </button>
                     </div>
                   </div>
@@ -97,7 +101,9 @@ export default class WatchList extends Component {
         </div>
         <div className="clearbutton">
           <button onClick={() => this.clearList()}>
-            <i className="fa fa-times-circle" /> Clear List
+						<NavLink to={`/`}>
+            	<i className="fa fa-times-circle" /> Clear List
+						</NavLink>
           </button>
         </div>
         <div>{this.state.favList}</div>

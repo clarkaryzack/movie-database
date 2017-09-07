@@ -47,13 +47,18 @@ else if (this.props.match.params.n1==="search") {
 	)
 }
 else if (this.props.match.params.n1==="watchlist") {
-	return(
-		<Redirect push to={`/watchlist`}>
+	if (this.props.match.params.n2) {
+		return(
+			<Redirect push to={`/watchlist`}>
+			</Redirect>
+		)
+	}
+}
+else {
+	return (
+		<Redirect push to={`/`}>
 		</Redirect>
 	)
-} else return (
-	<Redirect push to={`/`}>
-	</Redirect>
-)
-  }
+}
+}
 }

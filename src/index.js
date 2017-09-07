@@ -19,8 +19,9 @@ import ScrollToTop from "./components/ScrollToTop.js"
 ReactDOM.render(
   <BrowserRouter>
     <BaseLayout>
+			<ScrollToTop>
       <Switch>
-				<ScrollToTop>
+
 				<Route path="/waypoint/:n1/:n2/:n3/:n4" component={Waypoint} />
 				<Route path="/waypoint/:n1/:n2/:n3" component={Waypoint} />
 				<Route path="/waypoint/:n1/:n2" component={Waypoint} />
@@ -31,9 +32,10 @@ ReactDOM.render(
         <Route path="/search/:term/:page" component={SearchResults} />
         <Route path="/all/:genre/:term/:page" component={AllResults} />
         <Route path="/watchList" component={WatchList} />
+
         <Route path="/" component={MainPage} />
-			</ScrollToTop>
       </Switch>
+			</ScrollToTop>
     </BaseLayout>
   </BrowserRouter>,
   document.getElementById("root")
