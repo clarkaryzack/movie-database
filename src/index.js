@@ -13,11 +13,18 @@ import BaseLayout from "./base_layout.js";
 import SearchResults from "./components/SearchResults.js";
 import AllResults from "./components/AllResults.js";
 import WatchList from "./components/WatchList.js";
+import Waypoint from "./components/Waypoint.js";
+import ScrollToTop from "./components/ScrollToTop.js"
 
 ReactDOM.render(
   <BrowserRouter>
     <BaseLayout>
       <Switch>
+				<ScrollToTop>
+				<Route path="/waypoint/:n1/:n2/:n3/:n4" component={Waypoint} />
+				<Route path="/waypoint/:n1/:n2/:n3" component={Waypoint} />
+				<Route path="/waypoint/:n1/:n2" component={Waypoint} />
+				<Route path="/waypoint/:n1" component={Waypoint} />
         <Route path="/movie/:movienum" component={MoviePage} />
         <Route path="/tv/:tvnum" component={TVPage} />
         <Route path="/person/:personnum/" component={PersonPage} />
@@ -25,6 +32,7 @@ ReactDOM.render(
         <Route path="/all/:genre/:term/:page" component={AllResults} />
         <Route path="/watchList" component={WatchList} />
         <Route path="/" component={MainPage} />
+			</ScrollToTop>
       </Switch>
     </BaseLayout>
   </BrowserRouter>,

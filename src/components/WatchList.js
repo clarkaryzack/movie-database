@@ -23,9 +23,7 @@ export default class WatchList extends Component {
       {
         method: "POST"
       }
-    ).then(response => {
-      window.location = "/watchlist";
-    });
+    )
   }
 //remove item removes a single item from the favorites list
   removeItem(id) {
@@ -40,9 +38,7 @@ export default class WatchList extends Component {
         },
         body: JSON.stringify({ media_id: id })
       }
-    ).then(response => {
-      window.location = "/watchlist";
-    });
+    )
   }
   componentDidMount() {
     //fetch and map movie watchlist

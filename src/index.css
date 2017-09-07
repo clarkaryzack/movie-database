@@ -41,6 +41,18 @@ h2 {
 .navbutton button {
 	height: 100%;
 }
+.searchbutton button {
+	border-radius: 5px
+}
+.searchbutton {
+	border-radius: 5px
+}
+.backbutton button {
+	border-radius: 5px
+}
+.forwardbutton button {
+	border-radius: 5px
+}
 .pagebody {
 	background-color: #254759;
 	margin: 0px;
@@ -91,7 +103,9 @@ h2 {
 	background-color: #63A7CC;
 	margin: 0px
 }
-
+input {
+	margin-left: 10px
+}
 .headerbuttons {
 	margin-top: 50px;
 }
@@ -100,6 +114,9 @@ h2 {
 	margin-bottom: 10px
 }
 .moviepagefavbutton button {
+	border-radius: 5px
+}
+.searchform button {
 	border-radius: 5px
 }
 .moviepagefavbutton {
@@ -240,9 +257,6 @@ a:hover {
 .fa-plus-circle {
 	margin-top: 80px;
 	font-size: 100px
-}
-.navbutton button {
-	border-style: none;
 }
 .alltitle h3 {
  font-size: 20px;
