@@ -6,7 +6,6 @@ import { NavLink } from "react-router-dom";
 export default class MoviePage extends Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.addtoList = this.addtoList.bind(this);
     this.state = {
       movieInfo: "",
@@ -14,11 +13,6 @@ export default class MoviePage extends Component {
       credits: "",
       similar: ""
     };
-  }
-//handleSubmit is necessary to link to new movie pages (the window must be refreshed)
-  handleSubmit(event, id) {
-    event.preventDefault();
-    window.location = "/movie/" + id;
   }
 // addstoList adds a movie to the favorites list
 addtoList(id) {
@@ -83,8 +77,7 @@ addtoList(id) {
             <div key={movie.id} className="allrows">
               <div className="card moviecard">
                 <div className="cardinner">
-                    <a onClick={event => this.handleSubmit(event, movie.id)}>
-											<NavLink to={`/movie/${movie.id}`}>
+											<NavLink to={`/waypoint/movie/${movie.id}`}>
 											<img
                         className="movieposter"
                         alt="movie poster"
@@ -92,7 +85,6 @@ addtoList(id) {
                       />
                       <br /> {movie.title}
 											</NavLink>
-                    </a>
                 </div>
                 <div className="recommendbutton">
                   <button onClick={() => this.addtoList(movie.id, "movie")}>

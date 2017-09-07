@@ -12,11 +12,6 @@ export default class TVPage extends Component {
       credits: ""
     };
   }
-  //handleSubmit is necessary to link to new tv pages (the window must be refreshed)
-  handleSubmit(event, id) {
-    event.preventDefault();
-    window.location = "/tv/" + id;
-  }
   componentDidMount() {
     //the fetch url is taken from search parameters in the page url
     console.log(this.props.match.params.tvnum);
@@ -76,7 +71,7 @@ export default class TVPage extends Component {
           return (
             <div key={tv.id} className="allrows">
                 <div className="card moviecard">
-                  <a onClick={event => this.handleSubmit(event, tv.id)}>
+                  <NavLink to={`/waypoint/tv/${tv.id}`}>
                     <img
                       className="movieposter"
                       alt="movie poster"
@@ -84,7 +79,7 @@ export default class TVPage extends Component {
                     />
                     <br />
                     {tv.name}
-                  </a>
+                  </NavLink>
                 </div>
             </div>
           );

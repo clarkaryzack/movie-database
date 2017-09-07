@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./index.css";
 
+import { withRouter } from 'react-router-dom';
+
 import Header from "./components/Header.js";
 import Footer from "./components/Footer.js";
 
@@ -20,4 +22,4 @@ class BaseLayout extends Component {
   }
 }
 
-export default BaseLayout;
+export default withRouter(BaseLayout);

@@ -6,8 +6,6 @@ import { NavLink } from "react-router-dom";
 export default class AllResults extends Component {
   constructor(props) {
     super(props);
-    this.nextPage = this.nextPage.bind(this);
-    this.prevPage = this.prevPage.bind(this);
     this.state = {
       allCards: <div className='allsearchempty'>There are no results that match your search.</div>,
       bigArray: [],
@@ -15,41 +13,9 @@ export default class AllResults extends Component {
       heading: ""
     };
   }
-// next page button action
-  nextPage(event) {
-    event.preventDefault();
-    let nextPage = parseInt(this.props.match.params.page, 10) + 1;
-    window.location =
-      "/all/" +
-      this.props.match.params.genre +
-      "/" +
-      this.props.match.params.term +
-      "/" +
-      nextPage;
-  }
-// previous page button action
-  prevPage(event) {
-    event.preventDefault();
-    if (this.props.match.params.page > 1) {
-      let prevPage = parseInt(this.props.match.params.page, 10) - 1;
-      window.location =
-        "/all/" +
-        this.props.match.params.genre +
-        "/" +
-        this.props.match.params.term +
-        "/" +
-        prevPage;
-    } else {
-      let prevPage = this.props.match.params.page;
-      window.location =
-        "/all/" +
-        this.props.match.params.genre +
-        "/" +
-        this.props.match.params.term +
-        "/" +
-        prevPage;
-    }
-  }
+	componentWillReceiveProps(nextProps) {
+
+	}
   componentWillMount() {
     if (this.props.match.params.term === "ztoprated") {
       if (this.props.match.params.genre === "movie") {
@@ -190,18 +156,18 @@ export default class AllResults extends Component {
         <div className="allpage">
           <div className="allpagenav row">
             <div className="backbutton col-2 offset-2">
-              <a className="navbutton" onClick={this.prevPage}>
+              <NavLink to={`/waypoint/all/${this.props.match.params.genre}/${this.props.match.params.term}/${parseInt(this.props.match.params.page, 10)-1}`}>
                 <button>
                   <i className="fa fa-chevron-left" />Prev Page
                 </button>
-              </a>
+              </NavLink>
             </div>
             <div className="forwardbutton col-2 offset-4">
-              <a className="navbutton" onClick={this.nextPage}>
-                <button>
+                <NavLink push to={`/waypoint/all/${this.props.match.params.genre}/${this.props.match.params.term}/${parseInt(this.props.match.params.page, 10)+1}`}>
+								<button>
                   Next Page<i className="fa fa-chevron-right" />
-                </button>
-              </a>
+								</button>
+                </NavLink>
             </div>
           </div>
           <div className="allpagecards col-12">
@@ -211,18 +177,18 @@ export default class AllResults extends Component {
           </div>
           <div className="allpagenav row">
             <div className="backbutton col-2 offset-2">
-              <a className="navbutton" onClick={this.prevPage}>
+            <NavLink to={`/waypoint/all/${this.props.match.params.genre}/${this.props.match.params.term}/${parseInt(this.props.match.params.page, 10)-1}`}>
                 <button>
                   <i className="fa fa-chevron-left" />Prev Page
                 </button>
-              </a>
+              </NavLink>
             </div>
             <div className="forwardbutton col-2 offset-4">
-              <a className="navbutton" onClick={this.nextPage}>
+              <NavLink push to={`/waypoint/all/${this.props.match.params.genre}/${this.props.match.params.term}/${parseInt(this.props.match.params.page, 10)+1}`}>
                 <button>
                   Next Page<i className="fa fa-chevron-right" />
                 </button>
-              </a>
+                </NavLink>
             </div>
           </div>
         </div>
