@@ -14,11 +14,13 @@ import SearchResults from "./components/SearchResults.js";
 import AllResults from "./components/AllResults.js";
 import WatchList from "./components/WatchList.js";
 import Waypoint from "./components/Waypoint.js";
+import ScrollToTop from "./components/ScrollToTop.js"
 
 ReactDOM.render(
   <BrowserRouter>
     <BaseLayout>
       <Switch>
+				<ScrollToTop>
 				<Route path="/waypoint/:n1/:n2/:n3/:n4" component={Waypoint} />
 				<Route path="/waypoint/:n1/:n2/:n3" component={Waypoint} />
 				<Route path="/waypoint/:n1/:n2" component={Waypoint} />
@@ -30,6 +32,7 @@ ReactDOM.render(
         <Route path="/all/:genre/:term/:page" component={AllResults} />
         <Route path="/watchList" component={WatchList} />
         <Route path="/" component={MainPage} />
+			</ScrollToTop>
       </Switch>
     </BaseLayout>
   </BrowserRouter>,
