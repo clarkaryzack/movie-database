@@ -188,7 +188,7 @@ a:hover {
 	width: 300px
 }
 .bodytext h2 {
-	margin: 0
+	margin: 0px;
 }
 .recommendbutton {
 	margin-bottom: 10px;
@@ -263,7 +263,7 @@ a:hover {
  margin-top: -10px;
  margin-left: 40px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1150px) {
 	h1 {
 		font-size: 80px
 	}
