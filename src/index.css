@@ -56,6 +56,7 @@ h2 {
 .pagebody {
 	background-color: #254759;
 	margin: 0px;
+	width: 100%
 }
 .bodycard {
 	border-radius: 10px;
