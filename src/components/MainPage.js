@@ -87,7 +87,7 @@ export default class MainPage extends Component {
                 let popularPeople = response.results.map(person => {
                   if (person.profile_path) {
                     let personurl =
-                      "https://image.tmdb.org/t/p/w640/" + person.profile_path;
+                      "https://image.tmdb.org/t/p/w500/" + person.profile_path;
                     return (
                       <div key={person.id} className="allrows">
                         <NavLink to={`/person/${person.id}`}>
@@ -151,7 +151,7 @@ export default class MainPage extends Component {
                         let popularTVCards = response.results
                           .map(movie => {
                             let movieurl =
-                              "https://image.tmdb.org/t/p/w650/" +
+                              "https://image.tmdb.org/t/p/w500/" +
                               movie.poster_path;
                             return (
                               <div key={movie.id} className="allrows">
@@ -191,7 +191,6 @@ export default class MainPage extends Component {
       });
   }
   render() {
-		console.log(this.state.popularTV)
     return (
       <div>
         <div className="rowtitle">

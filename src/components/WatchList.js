@@ -28,7 +28,6 @@ export default class WatchList extends Component {
   }
 //remove item removes a single item from the favorites list
   removeItem(id) {
-    console.log("here");
     fetch(
       "https://api.themoviedb.org/3/list/32914/remove_item?api_key=4f2d813db1c216bca9c8a22d63ad274a&session_id=8203c9d46e318fdae07959d4701916b6a13b5031",
       {

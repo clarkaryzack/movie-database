@@ -118,7 +118,6 @@ export default class AllResults extends Component {
           }
 //map tv cards
           if (this.state.genre === "person") {
-            console.log("here");
             let personurl =
               "https://image.tmdb.org/t/p/w640/" + card.profile_path;
             return (

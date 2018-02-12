@@ -26,7 +26,6 @@ export default class Form extends Component {
   }
   render() {
     //render form
-    console.log(this.state.searchterm);
     return (
       <div className="searchform row">
 				<div>
@@ -42,8 +41,7 @@ export default class Form extends Component {
           <NavLink
             to={`/waypoint/search/${this.state.searchterm}/1`}
             name="submit"
-            value="submit"
-          >
+            value="submit">
             <button>search</button>
           </NavLink>
         </div>

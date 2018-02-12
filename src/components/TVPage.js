@@ -41,7 +41,7 @@ export default class TVPage extends Component {
         let credits = response.credits.cast.map(cast => {
           console.log(cast.profile_path);
           if (cast.profile_path) {
-            let imgurl = "https://image.tmdb.org/t/p/w640/" + cast.profile_path;
+            let imgurl = "https://image.tmdb.org/t/p/w500/" + cast.profile_path;
             console.log(imgurl);
             return (
               <div key={cast.credit_id} className="allrows">
@@ -119,16 +119,16 @@ export default class TVPage extends Component {
       "https://image.tmdb.org/t/p/w500" + this.state.tvInfo.poster_path;
     return (
       //body of page
-      <div>
+      <div class="container">
         <div className="pagetitle">
           <h2>TV Show Details</h2>
         </div>
         <div className="pagebody row centered">
-          <div className="col-lg-8 col-md-10 offset-lg-2 offset-md-1 row bodycard align-self-center">
-            <div className="col-lg-6 col-md-12 align-self-center">
-              <img alt="card" src={tvurl} className="bodyposter" />
+					<div className="bodycard row col-lg-10 col-md-8 col-10 offset-md-2 offset-lg-1 offset-1 row">
+            <div className="col-lg-6 col-md-12 col-12">
+              <img alt="card" src={tvurl} className="bodyposter"/>
             </div>
-            <div className="col-lg-6 col-md-12 align-self-center">
+            <div className="col-lg-6 col-md-12 align-self-center bodytext">
               <h2>{this.state.tvInfo.name}</h2>
               <br />
               Air Dates: {monthNames[mm1]} {dd1}, {yy1} - {monthNames[mm2]}{" "}

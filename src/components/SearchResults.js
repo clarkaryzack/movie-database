@@ -34,13 +34,10 @@ export default class SearchResults extends Component {
       this.props.match.params.term +
       "&include_adult=false&page=" +
       this.props.match.params.page;
-    console.log(moviesearchurl);
     fetch(moviesearchurl)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         let movieCards = response.results.map(movie => {
-          console.log(movie.poster_path);
           if (movie.poster_path) {
             let movieurl =
               "https://image.tmdb.org/t/p/w500" + movie.poster_path;
@@ -82,11 +79,9 @@ export default class SearchResults extends Component {
       this.props.match.params.term +
       "&include_adult=false&page=" +
       this.props.match.params.page;
-    console.log(tvsearchurl);
     fetch(tvsearchurl)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         let tvCards = response.results.map(tv => {
           if (tv.poster_path) {
             let tvurl = "https://image.tmdb.org/t/p/w500" + tv.poster_path;
@@ -121,12 +116,10 @@ export default class SearchResults extends Component {
     fetch(personsearchurl)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         let personCards = response.results.map(person => {
-          console.log(person.profile_path);
           if (person.profile_path) {
             let personurl =
-              "https://image.tmdb.org/t/p/w640/" + person.profile_path;
+              "https://image.tmdb.org/t/p/w500/" + person.profile_path;
             return (
               <div key={person.id} className="allrows">
                 <NavLink to={`/person/${person.id}`}>
@@ -155,9 +148,6 @@ export default class SearchResults extends Component {
       });
   }
   render() {
-		console.log(this.state.movielist)
-		console.log(this.state.tvlist)
-		console.log(this.state.personlist)
     return (
       <div>
         <div className="searchtitle">

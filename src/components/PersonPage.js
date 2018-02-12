@@ -69,11 +69,7 @@ export default class PersonPage extends Component {
           var yy2 = date2.getFullYear();
           date2 = monthNames[mm2] + " " + dd2 + ", " + yy2;
         }
-        console.log(date1);
-        console.log(date2);
         this.setState({ birthday: date1, deathday: date2 });
-        console.log(this.state.birthday);
-        console.log(this.state.deathday);
         // add film credits to state by appending credits to fetch url
         let moviecredits = response.movie_credits.cast.map(movie => {
           if (movie.poster_path) {
@@ -129,7 +125,6 @@ export default class PersonPage extends Component {
             return null;
           }
         });
-        console.log(tvcredits);
         this.setState({ tvCards: tvcredits });
       })
       .catch(function(error) {
@@ -137,16 +132,16 @@ export default class PersonPage extends Component {
       });
   }
   render() {
-    let personurl =
-      "https://image.tmdb.org/t/p/w640/" + this.state.personInfo.profile_path;
+    let personurl = "https://image.tmdb.org/t/p/w500" + this.state.personInfo.profile_path;
+		console.log("personurl",personurl)
     return (
-      <div>
+      <div class="container">
         <div className="pagetitle">
           <h2>Person Details</h2>
         </div>
         <div className="pagebody row centered">
-          <div className="bodycard col-lg-8 col-md-10 offset-md-1 offset-lg-2 row">
-            <div className="col-lg-6 col-md-12">
+					<div className="bodycard row col-lg-10 col-md-8 col-10 offset-md-2 offset-lg-1 offset-1 row">
+            <div className="col-lg-6 col-md-12 col-12">
               <img alt="card" src={personurl} className="bodyposter" />
             </div>
             <div className="col-lg-6 col-md-12 align-self-center bodytext">

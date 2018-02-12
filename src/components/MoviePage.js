@@ -30,24 +30,20 @@ addtoList(id) {
 	}
   componentDidMount() {
 //the fetch url is taken from search parameters in the page url
-    console.log(this.props.match.params.movienum);
     let movienum = parseInt(this.props.match.params.movienum, 10);
 //initial fetch - stored to movieInfo in state
     let fetchurl =
       "https://api.themoviedb.org/3/movie/" +
       movienum +
       "?api_key=4f2d813db1c216bca9c8a22d63ad274a&language=en-US&append_to_response=credits,similar";
-    console.log(fetchurl);
     fetch(fetchurl)
       .then(response => response.json())
       .then(response => {
         this.setState({ movieInfo: response });
         // add cast to state by appending credits to fetch url
         let credits = response.credits.cast.map(cast => {
-          console.log(cast.profile_path);
           if (cast.profile_path) {
-            let imgurl = "https://image.tmdb.org/t/p/w640/" + cast.profile_path;
-            console.log(imgurl);
+            let imgurl = "https://image.tmdb.org/t/p/w500/" + cast.profile_path;
             return (
               <div key={cast.credit_id} className="allrows">
                   <div className="card moviecard">
@@ -72,7 +68,6 @@ addtoList(id) {
 // add similar movies to state by appending credits to fetch url
         let similar = response.similar.results.map(movie => {
           let imgurl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
-          console.log(imgurl);
           return (
             <div key={movie.id} className="allrows">
               <div className="card moviecard">
@@ -126,16 +121,16 @@ addtoList(id) {
       "https://image.tmdb.org/t/p/w500" + this.state.movieInfo.poster_path;
     return (
 //body of page
-      <div>
+      <div class="container">
         <div className="pagetitle">
           <h2>Movie Details</h2>
         </div>
         <div className="pagebody row centered">
-          <div className="bodycard col-lg-8 col-md-10 offset-md-1 offset-lg-2 row">
-            <div className="col-lg-6 col-md-12">
+          <div className="bodycard row col-lg-10 col-md-8 col-10 offset-md-2 offset-lg-1 offset-1 row">
+            <div className="col-lg-6 col-md-12 col-12">
               <img alt="card" src={movieurl} className="bodyposter" />
             </div>
-            <div className="col-lg-6 col-md-12 align-self-center bodytext">
+            <div className="col-lg-6 col-md-12 col-12 align-self-center bodytext">
               <h2>{this.state.movieInfo.title}</h2>
               <br />
               Release Date: {monthNames[mm]} {dd}, {yy}
