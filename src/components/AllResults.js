@@ -112,14 +112,13 @@ export default class AllResults extends Component {
                   </NavLink>
                 </div>
               );
-            }
-          } else {
-            return null;
-          }
+            } else {
+	            return null;
+	          }
 //map tv cards
-          if (this.state.genre === "person") {
+          } else if (this.state.genre === "person") {
             let personurl =
-              "https://image.tmdb.org/t/p/w640/" + card.profile_path;
+              "https://image.tmdb.org/t/p/w500/" + card.profile_path;
             return (
               <div key={card.id} className="col allcard">
                 <NavLink to={`/${this.props.match.params.genre}/${card.id}`}>
@@ -141,7 +140,7 @@ export default class AllResults extends Component {
 				if (allCards.length !== 0) {
         this.setState({ allCards: allCards });
 			}
-      });
+    });
   }
   render() {
 //render for all, regardless of card type
