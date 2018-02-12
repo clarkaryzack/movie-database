@@ -19,11 +19,6 @@ export default class Form extends Component {
   handleFormChange(event) {
     this.setState({ searchterm: event.target.value });
   }
-  // clears input box after a search
-  handleButtonClick(event) {
-    this.forceUpdate();
-    this.setState({ searchterm: "" });
-  }
   render() {
     //render form
     return (
