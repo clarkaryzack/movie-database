@@ -27,7 +27,7 @@ export default class Form extends Component {
   render() {
     //render form
     return (
-      <div className="searchform row">
+      <form className="searchform row">
 				<div>
         <input
           className="textbox"
@@ -42,10 +42,10 @@ export default class Form extends Component {
             to={`/waypoint/search/${this.state.searchterm}/1`}
             name="submit"
             value="submit">
-            <button>search</button>
+            <button type="submit">search</button>
           </NavLink>
         </div>
-      </div>
+      </form>
     );
   }
 }
